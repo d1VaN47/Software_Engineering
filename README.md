@@ -359,9 +359,22 @@ print("Предложение заканчивается на end: ", flag2)
 ## Задание 5
 Составьте программу, из фрагментов кода.
   ```python
-
+string = "hello"
+values = [0, 2, 4, 6, 8, 10]
+counter = 0
+while " world" not in string:
+    memory = string
+    if counter in values:
+        string = string + " world"
+    print(string)
+    if counter < 10:
+        string = memory
+    counter += 1
 ```
   ### Результат
+![Desktop_231020_1824](https://github.com/d1VaN47/Software_Engineering/assets/145551753/c4a45ae5-b13c-46c1-b105-3ffd5c5fb8a6)
 
 ## Краткий вывод:
+Для того чтобы в итоговом выводе было 11 строк мы начинаем с 0 и добавляем сортировку пока число меньше 10, как только число больше 10, значение string не возвращается и цикл прерывается. Так же чтобы через одну строку были надписи Hello world мы переменную сравниваем с массивом чётных чисел и каждый раз при чётном числе добавляем world.
 
+Цикл while " world" not in string: работает пока в значении стринг не будет world
