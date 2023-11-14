@@ -330,23 +330,25 @@ hello email python the exam wor is
 
 • Предложение для проверки:  
 
-Hello, world! Python IS the programming language of thE future. My EMAIL is....  
-
-PYTHON is awesome!!!!  
+Hello, world! Python IS the programming language of thE future. My EMAIL is....  PYTHON is awesome!!!!  
 
 • Ожидаемый результат:  
 
-*****, ***ld! ****** ** *** programming language of *** future. My ***** **....  
-
-****** ** awesome!!!!
+*****, ***ld! ****** ** *** programming language of *** future. My ***** **....  ****** ** awesome!!!!
 
   ```python
-
+text = input("Введите предложение: ")
+with open('test.txt', 'r', encoding='utf-8') as f:
+    ban_words = f.read().split()
+for ban_word in ban_words:
+    text= text.lower().replace(ban_word, "*" * len(ban_word))
+print(text)
 ```
 ### Результат
+![Desktop_231114_1956](https://github.com/d1VaN47/Software_Engineering/assets/145551753/e2b0995f-4597-4cd0-91e4-f47cc0489594)
 
 ## Краткий вывод:
-
+Для выполнения данной задачи мы превращаем в массив все запрещённые слова, далее запускаем цикл где по 1 берём эти слова и ищем их в введённом пользователем предложении, переведённом в нижний регистр, в случае нахождения заменяем на * в количетсве равном длине запрещённого слова
 
 ## Задание 5
 Самостоятельно придумайте и решите задачу, которая будет  взаимодействовать с текстовым файлом
