@@ -224,10 +224,33 @@ print(klient1111._adres)
 Самостоятельно реализуйте полиморфизм. Он должен отличаться,  от того, что указан в теоретическом материале (методичке) и  лабораторных заданиях. Результатом выполнения задания будет  листинг кода и получившийся вывод консоли.
 
   ```python
+class Botanica:
+    def __init__(self, adres, time):
+        self.adres = adres
+        self.time = time
 
+    def inf(self):
+        print(f"Адрес клиента: {self.adres}, необходимо доставить к {self.time}")
+    def cena(self):
+        print(f"Стоимость доставки 120 рублей")
+
+class Kompressornii(Botanica):
+    def cena(self):
+        print(f"Стоимость доставки 350 рублей")
+
+class Aramil(Botanica):
+    def cena(self):
+        print(f"Стоимость доставки 500 рублей")
+
+klient1111 = Kompressornii("Латвийская 56/3", "12:00")
+klient1111.inf()
+klient1111.cena()
+klient1112 = Aramil("Текстильщиков 11", "13:15")
+klient1112.inf()
+klient1112.cena()
 ```
 ### Результат
+![Desktop_231117_2042](https://github.com/d1VaN47/Software_Engineering/assets/145551753/ddd497db-54e5-4a8d-80e7-72b1473a4b98)
 
 ## Краткий вывод:
-
-
+В данном коде мы создаём 3 класса с названиями районов. 2 и 3 классы наследуют 1ый класс, переопеределяя только метод "cena" в зависимости от стоиомсти доставки в данный район.
