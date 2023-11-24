@@ -154,3 +154,70 @@ greet(John)
 # Самостоятельная работа
 ## Задание 1
 Задание Садовник и помидоры.
+
+```python
+class Tomato:
+    states = {"Отсутствует": 0, "Цветение": 1, "Зеленый": 2, "Красный": 3}
+    def __init__(self, index):
+        self._index = index #защищённый атрибут
+        self._state = self.states["Отсутствует"] #защищённый атрибут
+    def grow(self):
+        if self._state < 3:
+            self._state += 1
+    def is_ripe(self):
+        if self._state == 3:
+            return True
+class TomatoBush:
+    def __init__(self, kol_vo):
+        self.tomatoes = [Tomato(index) for index in range(1, kol_vo + 1)]
+    def grow_all(self):
+        for i in self.tomatoes:
+            i.grow()
+    def all_are_ripe(self):
+        a = True
+        for i in self.tomatoes:
+            if i.is_ripe():
+                pass
+            else:
+                a = False
+        return a
+    def give_away_all(self):
+        self.tomatoes = []
+class Gardener:
+    def __init__(self, name, plant):
+        self.name = name #публичный атрибут
+        self._plant = plant #защищённый атрибут
+    def work(self):
+        self._plant.grow_all()
+    def harvest(self):
+        if self._plant.all_are_ripe():
+            print("Урожай собран")
+            self._plant.give_away_all()
+        else:
+            print("Ещё не все Томаты созрели!")
+
+    @staticmethod
+    def knowledge_base():
+        print("Справка:\n1.) Регулярно поливайте томаты\n2.) Следите за созреванием плодов\n3.) Если плоды созрели то аккуратно соберите их все")
+
+Gardener.knowledge_base()
+bush = TomatoBush(3)
+print()
+Sadovod = Gardener("Иван", bush)
+Sadovod.work()
+Sadovod.work()
+Sadovod.harvest()
+Sadovod.work()
+Sadovod.harvest()
+```
+### Результат
+![Desktop_231124_2356](https://github.com/d1VaN47/Software_Engineering/assets/145551753/445ab664-5a38-4280-8b00-5c2c78f0731b)
+
+## Краткий вывод:
+Для выполнения задания мы создаём 3 класса.
+
+Первый класс Tomato содержит 3 метода, впервом мы объявляем атрибуты (порядковый номер и стадии созревания), второй метод повышает стадию созревания у выбранного куста, а третий проверяет созрел ли куст.
+
+Второй класс TomatoBush содержит 4 метода. Первый создаёт массив со всеми имеющимися кустами, Второй grow_all повышает стадию созревания у всех кустов, тертий all_are_ripe проверяет все ли кусты созрели, четвёртый give_away_all очищает базу растений (собирает все плоды)
+
+Третий класс Gardener 3 обычных метода и 1 статичный. Первый метод создаёт 2 атрибута (Имя садовника и растение), второй метод work - повышает степень созревания у всех растений на 1 (Ухаживает за томатами), третий класс harvest проверяет все ли томаты созрели, если все, то собироает все томаты (очищает список кустов), если нет то выводит сообщение об этом, а статичный метод knowledge_base выводит справку.
