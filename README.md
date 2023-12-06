@@ -1,4 +1,4 @@
-![Desktop_231206_2348](https://github.com/d1VaN47/Software_Engineering/assets/145551753/4045dc02-d9af-4f36-bce7-85a57053c3c7)# Тема 11. Итераторы и генераторы
+# Тема 11. Итераторы и генераторы
 Отчет по Теме #11 выполнил:
 - Верхотуров Иван Сергеевич
 - ПИЭ-21-1
@@ -58,34 +58,59 @@ if __name__ == '__main__':
 Генератор списка
 
   ```python
+a = [i ** 2 for i in range(1, 5)]
+print('a - ', a)
+for i in a:
+    print(i)
 
+print('iter(a) - ', iter(a))
+for i in a:
+    print(i)
 ```
 ### Результат
+![Desktop_231207_0025](https://github.com/d1VaN47/Software_Engineering/assets/145551753/35e30baf-9e8f-4521-b1c6-4c49e9c9563d)
 
 ## Краткий вывод:
-
+В данном коде мы создаём генератор, который создаёт список квадратов чисел от 1 до 4 вклюсительно. И в дальнейшем выводим
 
 ## Задание 4
 Выражения генераторы
 
   ```python
-
+b = (i ** 2 for i in range(1, 5))
+print(b)
+print('first')
+for i in b:
+    print(i)
+print('second')
+for i in b:
+    print(i)
 ```
 ### Результат
+![Desktop_231207_0030](https://github.com/d1VaN47/Software_Engineering/assets/145551753/82506dec-a1f7-4d7e-ad3a-25534b01da0f)
 
 ## Краткий вывод:
-
+В данном коде мы создаём генераторное выражение, которое дальше пытаемся 2 раза вывести, но в консоль выводится только 1 раз, во второй раз ничего не удаётся вывести, так как генератор уже выдал все свои значаения и он исчерпан.
 
 ## Задание 5
 Такой же счетчик, как и в первом задании, только это генератор и  использует yield
 
   ```python
+def countdown(count):
+    while count >= 0:
+        yield count
+        count -= 1
 
+if __name__ == '__main__':
+    counter = countdown(5)
+    for i in counter:
+        print(i)
 ```
 ### Результат
+![Desktop_231207_0037](https://github.com/d1VaN47/Software_Engineering/assets/145551753/ba254bc9-7de8-4a36-9438-e09d2f5e9fd1)
 
 ## Краткий вывод:
-
+В данном коде мы создаём генератор с  yield, который создаёт итерируемую последовательность начиная от 5 и до 0.
 
 # Самостоятельная работа
 ## Задание 1
